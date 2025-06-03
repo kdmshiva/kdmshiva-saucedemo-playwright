@@ -33,19 +33,6 @@ Data-driven testing
 
 The project adopts a structured approach to maintainability and scalability. Here's an overview of the project's directory structure:
 
-demo/
-├── .gitignore
-├── package.json
-├── playwright.config.js
-├── .github/
-│   └── workflows/
-│       └── playwright.yml         # GitHub Actions for CI
-├── page-objects/
-│   ├── base_page.locators.js     # Base/shared locators (e.g., page title)
-│   ├── login_page.locators.js    # Login page locators + userLogin method
-│   └── products_page.locators.js # Product page locators
-├── tests/
-│   ├── login.spec.js             # Login test cases (valid + invalid)
-│   └── products.spec.js          # Product-related test validations
+ <img width="660" alt="Screenshot 2025-06-03 at 7 22 54 PM" src="https://github.com/user-attachments/assets/fa2e6439-31b9-4935-bb98-0349844df700" />
 
 
