@@ -16,9 +16,9 @@ test.describe('Products Scenarios', () => {
     //create class page-locator class object
     const commonPage = new basePage(page);
     const login = new loginPage(page);
-    //Uuser has to login
+    //User has to login
     await login.userLogin(userDetails);
-    //Verify produsts screen is displayed
+    //Verify products screen is displayed
     await expect(page).toHaveURL('/inventory.html');
     await expect(commonPage.pageTitle).toContainText('Products');
 
@@ -36,7 +36,6 @@ test.describe('Products Scenarios', () => {
     await products.selectSortOption('Price (low to high)');
     const pricesLowHigh = await products.getProductPrices();
     expect(pricesLowHigh).toEqual([...pricesLowHigh].sort((a, b) => a - b));
-
     // Step 4: Price High–Low
     await products.selectSortOption('Price (high to low)');
     const pricesHighLow = await products.getProductPrices();
@@ -46,18 +45,18 @@ test.describe('Products Scenarios', () => {
 
   test('TC2-Products | Add to Basket | Checkout', async ({ page }) => {
     const products = new productsPage(page);
-    // Aadd product to the cart and verify  'Aadd Cart' button is chnaged into 'Rremove' on the selected product
+    //Add product to the cart and verify  'Add Cart' button is changed to 'Remmove' on the selected product
     const selectedItem = await products.addProductToCart('Sauce Labs Backpack');
     expect(selectedItem[0]).toBe('Sauce Labs Backpack');
     expect(selectedItem[1]).toBe('$29.99');
     console.log('Selected Item:', selectedItem);
-    //Verify cart badgecoount on right side top cart
+    //Verify cart badgecount on top right
     expect(await products.getCartItemCount()).toBe(1);
-    //Nnavigate to cart pae
+    //Navigate to cart page
     await products.goToCart()
     //Verifying the added product details on cart page
     await products.verifyProductInCart(selectedItem[0], selectedItem[1]);
-    //Nnavigate to checkout page and submit the checkout
+    //Navigate to checkout page and submit
     await products.goToCheckout()
     await products.enterCustomerDetails('First', 'Last', '8000');
     await products.submitCustomerDetails();
