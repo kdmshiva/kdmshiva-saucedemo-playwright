@@ -19,6 +19,7 @@ test.describe('Login Scenarios', () => {
     const commonPage = new basePage(page);
     const login = new loginPage(page);
     await login.userLogin(userDetails);
+    //Checking for products page upon login
     await expect(page).toHaveURL('/inventory.html');
     await expect(commonPage.pageTitle).toContainText('Products');
   });
